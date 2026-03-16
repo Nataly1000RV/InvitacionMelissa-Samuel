@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <!-- Viewport correcto para móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación | Melissa & Samuel</title>
+  <style>
+    :root{
+      --primary:#2f4f4f;         /* Verde/gris elegante */
+      --accent:#3b5f5a;
+      --bg-overlay: rgba(255,255,255,.84);
+      --shadow: 0 8px 30px rgba(0,0,0,.15);
+      --btn:#2e6f64;
+      --btn-hover:#245a51;
+      --btn-text:#fff;
+    }
+
+    /* Reset básico */
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Georgia", serif;
+      color: var(--primary);
+    }
+
+    /* Fondo con tu imagen */
+    body {
+      background: url("marco-floral.png") center top / cover no-repeat fixed;
+      display: grid;
+      place-items: center;
+      padding: clamp(12px, 2vw, 24px);
+    }
+
+    /* Tarjeta */
+    .card {
+      width: min(900px, 96vw);
+      background: var(--bg-overlay);
+      backdrop-filter: blur(1px);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(47,79,79,.18);
+    }
+
+    .inner {
+      padding: clamp(18px, 3.2vw, 40px) clamp(18px, 4vw, 56px);
+      text-align: center;
+    }
+
+    .tagline {
+      font-style: italic;
+      font-size: clamp(18px, 2.4vw, 26px);
+      margin: 10px auto 24px;
+      line-height: 1.4;
+      color: var(--accent);
+    }
+
+    .names {
+      font-family: "Garamond", "Georgia", serif;
+      font-weight: 700;
+      letter-spacing: .06em;
+      font-size: clamp(32px, 5.2vw, 56px);
+      margin: 6px 0 12px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      margin: 16px auto 22px;
+      background: var(--accent);
+      opacity: .35;
+    }
+
+    .when-where {
+      font-size: clamp(16px, 2.3vw, 22px);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    /* Botones */
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 10px 0 18px;
+    }
+    .btn {
+      appearance: none; border: 0; border-radius: 12px;
+      background: var(--btn); color: var(--btn-text);
+      padding: 12px 18px; font-size: clamp(14px, 1.9vw, 16px);
+      text-decoration: none; box-shadow: var(--shadow);
+      transition: transform .05s ease, background .2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
+    .btn.secondary { background: #ffffff; color: var(--btn); border: 1px solid rgba(47,79,79,.25); }
+    .btn.secondary:hover { background: #f5fffc; }
+
+    /* Contador */
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(70px, 1fr));
+      gap: clamp(8px, 2vw, 16px);
+      margin: 18px auto 8px;
+    }
+    .timebox {
+      background: white;
+      border: 1px solid rgba(47,79,79,.2);
+      border-radius: 14px;
+      padding: clamp(10px, 2.2vw, 16px);
+      box-shadow: var(--shadow);
+    }
+    .timebox .num {
+      display: block;
+      font-size: clamp(22px, 4.4vw, 42px);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .timebox .lbl {
+      font-size: clamp(12px, 1.8vw, 14px);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+
+    .count-title { margin-top: 6px; font-size: clamp(13px, 1.9vw, 16px); opacity: .8; }
+
+    .note {
+      margin-top: 12px;
+      font-size: clamp(14px, 2.1vw, 18px);
+      line-height: 1.65;
+    }
+    .strong { font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+
+    .footer {
+      background: rgba(255,255,255,.92);
+      padding: 14px 18px 22px;
+      border-top: 1px dashed rgba(47,79,79,.25);
+      font-size: clamp(13px, 2vw, 16px);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .day-message { margin: 10px auto 0; font-size: clamp(14px, 2vw, 18px); color: #1f3b3b; font-weight: 600; }
+
+    @media (max-width: 420px){
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .icon { width: 1.1em; height: 1.1em; display: inline-block; }
+  </style>
+</head>
+<body>
+  <main class="card" role="article" aria-label="Invitación de boda Melissa y Samuel">
+    <section class="inner">
+      <p class="tagline">“Por que entre tantos posibles, elegimos este nosotros”</p>
+
+      <h1 class="names" aria-label="Melissa y Samuel">MELISSA &amp; SAMUEL</h1>
+      <div class="divider" aria-hidden="true"></div>
+
+      <p class="when-where">
+        <strong>2 de mayo de 2026</strong> · <strong>13:15</strong><br/>
+        <em>Jardín Getsemaní</em><br/>
+        Calle Clio #2350
+      </p>
+
+      <!-- Botones: Maps + Calendario -->
+      <div class="btns" role="group" aria-label="Acciones">
+        <!-- Google Maps (búsqueda por nombre y dirección) -->
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Jard%C3%ADn%20Getseman%C3%AD%2C%20Calle%20Clio%20%232350%2C%20Guadalajara%2C%20Jalisco0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+          </svg>
+          Abrir en Google Maps
+        </a>
+
+        <!-- Google Calendar (plantilla) -->
+        <a id="     <!-- calendar icon -->
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6a2 2 0 0 1 2-2h3V2zm13 7H4v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9z"/>
+          </svg>
+          Agregar a Google Calendar
+        </a>
+
+        <!-- Archivo .ICS (Outlook, iOS, Android) -->
+        <button type="button" id="icsBtn" class="btn secondary">
+          <!-- download icon -->
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 16l4-4h-3V4h-2v8H8l4 4zm-7 2h14v2H5v-2z"/>
+          </svg>
+          Descargar .ICS
+        </button>
+      </div>
+
+      <!-- Contador -->
+      <div class="countdown" aria-live="polite" aria-atomic="true">
+        <div class="timebox" aria-label="Días restantes">
+          <span id="dd" class="num">–</span>
+          <span class="lbl">Días</span>
+        </div>
+        <div class="timebox" aria-label="Horas restantes">
+          <span id="hh" class="num">–</span>
+          <span class="lbl">Horas</span>
+        </div>
+        <div class="timebox" aria-label="Minutos restantes">
+          <span id="mm" class="num">–</span>
+          <span class="lbl">Minutos</span>
+        </div>
+        <div class="timebox" aria-label="Segundos restantes">
+          <span id="ss" class="num">–</span>
+          <span class="lbl">Segundos</span>
+        </div>
+      </div>
+      <div id="dayMessage" class="day-message" role="status"></div>
+
+      <p class="count-title">"Código de vestimenta" Cóctel-Formal día</p>
+
+      <p class="note">
+        El regalo es opcional, <span class="strong">LA ASISTENCIA ES OBLIGATORIA</span>.<br/>
+        Pero si quieres dejar un detalle con nosotros, qué mejor regalo que efectivo;
+        en la entrada encontrarás una cajita donde podrás depositarlo.
+      </p>
+    </section>
+
+    <section class="footer">
+        <!-- WhatsApp para confirmar asistencia -->
+        <a class="btn secondary" target="_blank" rel="noopener"
+           href="https://wa.me/523313956601?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Melissa%20yicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.5 3.5A10.5 10.5 0 0 0 3.3 17.1L2 22l5-1.3A10.5 10.5 0 1 0 20.5 3.5zm-8 18A8.5 8.5 0 0 1 6.7 19l-.3-.2-3 .8.8-2.9-.2-.3A8.5 8.5 0 1 1 12.5 21.5zM8.8 7.9c.2-.6.5-.6.7-.6h.6c.2 0 .5 0 .7.5.2.6.9 2 .9 2.1 0 .2.1.5 0 .7-.1.2-.2.5-.5.8-.2.2-.5.6-.2 1s1.1 1.7 2.4 2.4c1.2.7 1.4.6 1.6.5.2-.1.8-.4 1-.8.3-.4.5-.7.8-.6.3.1 1.9.9 2.2 1 .3.2.5.3.6.5.1.2.1 1.3-.3 2.5-.4 1.2-2.2 1.1-3 .8-1-.3-2.2-.8-3.6-1.8-1-.7-1.8-1.6-2.5-2.5-.8-.9-1.6-2.3-1.8-3.1-.2-.9-.2-2.1.1-2.6z"/>
+          </svg>
+          Confirmar por WhatsApp
+        </a>
+      </div>
+  </main>
+
+  <script>
+    // =========================
+    // 1) Contador regresivo
+    // =========================
+    const eventLocal = new Date(2026, 4, 2, 13, 15, 0); // 2 mayo 2026, 13:15 hora local
+
+    const $dd = document.getElementById('dd');
+    const $hh = document.getElementById('hh');
+    const $mm = document.getElementById('mm');
+    const $ss = document.getElementById('ss');
+    const $dayMessage = document.getElementById('dayMessage');
+
+    function pad(n){ return String(n).padStart(2, '0'); }
+
+    function renderCountdown(){
+      const now = new Date();
+      const diff = eventLocal.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        const afterDiff = now.getTime() - eventLocal.getTime();
+        $dayMessage.textContent = (afterDiff < 86400000)
+          ? '¡Hoy es el gran día! 💍'
+          : 'Nuestra boda ya pasó. ¡Gracias por acompañarnos en esta aventura! ✨';
+        $dd.textContent = '00'; $hh.textContent = '00'; $mm.textContent = '00'; $ss.textContent = '00';
+        return;
+      }
+
+      const sec  = Math.floor(diff / 1000);
+      const days = Math.floor(sec / 86400);
+      const hrs  = Math.floor((sec % 86400) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = Math.floor(sec % 60);
+
+      $dd.textContent = days;
+      $hh.textContent = pad(hrs);
+      $mm.textContent = pad(mins);
+      $ss.textContent = pad(secs);
+
+      if (days <= 7)       $dayMessage.textContent = '¡Cuenta regresiva final! 🌟';
+      else if (days <= 30) $dayMessage.textContent = '¡Ya casi! Falta menos de un mes. 🎉';
+      else                 $dayMessage.textContent = '';
+    }
+    renderCountdown();
+    setInterval(renderCountdown, 1000);
+
+    // =========================
+    // 2) Enlaces de calendario
+    // =========================
+    // Datos del evento
+    const title   = 'Boda de Melissa y Samuel';
+    const details = 'Acompáñanos a celebrar este día tan especial.';
+    const placeName = 'Jardín Getsemaní, Calle Clio #2350, Guadalajara, Jalisco';
+    const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' +
+      encodeURIComponent('Jardín Getsemaní, Calle Clio #2350, Guadalajara, Jalisco');
+
+    // Duración estimada: 3 horas
+    const durationMinutes = 180;
+
+    // Utilidad: formatea fecha a UTC para Google Calendar y ICS (YYYYMMDDTHHMMSSZ)
+    function toUTCString(date){
+      const y = date.getUTCFullYear();
+      const m = String(date.getUTCMonth()+1).padStart(2,'0');
+      const d = String(date.getUTCDate()).padStart(2,'0');
+      const hh = String(date.getUTCHours()).padStart(2,'0');
+      const mm = String(date.getUTCMinutes()).padStart(2,'0');
+      const ss = String(date.getUTCSeconds()).padStart(2,'0');
+      return `${y}${m}${d}T${hh}${mm}${ss}Z`;
+    }
+
+    // Calcula fin
+    const eventEndLocal = new Date(eventLocal.getTime() + durationMinutes*60000);
+
+    // 2.a) Google Calendar link (action=TEMPLATE)
+    const gcalHref =
+      'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent(title) +
+      '&dates=' + toUTCString(eventLocal) + '/' + toUTCString(eventEndLocal) +
+      '&details=' + encodeURIComponent(details) +
+      '&location=' + encodeURIComponent(placeName) +
+      '&pli=1&sf=true&output=xml';
+
+    document.getElementById('gcalLink').href = gcalHref;
+
+    // 2.b) Generar y descargar .ICS
+    function downloadICS(){
+      const uid = 'boda-melissa-samuel-' + Date.now() + '@invitacion';
+      const dtstamp = toUTCString(new Date());
+      const dtstart = toUTCString(eventLocal);
+      const dtend   = toUTCString(eventEndLocal);
+
+      const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitacion//Boda Melissa y Samuel//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtstamp}
+DTSTART:${dtstart}
+DTEND:${dtend}
+SUMMARY:${title}
+DESCRIPTION:${details.replace(/\n/g, '\\n')}
+LOCATION:${placeName}
+URL:${mapsUrl}
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Boda-Melissa-Samuel.ics';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+    document.getElementById('icsBtn').addEventListener('click', downloadICS);
+  </script>
+</body>
+</html>
